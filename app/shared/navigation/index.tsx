@@ -7,9 +7,9 @@ import { useIsDesktop, useIsomorphicLayoutEffect } from "hooks";
 import throttle from "utils/throttle";
 
 const navLinks = [
-  { name: "Companies", href: "/companies" },
-  { name: "Jobs", href: "/jobs" },
-  { name: "Living in NL", href: "/life-in-the-netherlands" },
+  { name: "Browse companies", href: "/companies" },
+  { name: "View jobs", href: "/jobs" },
+  { name: "Life in NL", href: "/life-in-the-netherlands" },
 ];
 
 export default function Navigation() {

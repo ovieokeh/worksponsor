@@ -6,7 +6,7 @@ import { useCatch, useLoaderData } from "@remix-run/react";
 
 import { getCompany } from "~/model/company.server";
 
-import companyStyles from "~/styles/company.css";
+import companyStyles from "~/styles/pages/company.css";
 
 type LoaderData = {
   company: CompanyWithContactsAndSocials;

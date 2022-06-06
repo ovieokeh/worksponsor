@@ -11,8 +11,9 @@ import {
 import Layout from "./shared/layout";
 import Navigation from "./shared/navigation";
 
-import navigationStyles from "./shared/navigation/styles.css";
-import layoutStyles from "./shared/layout/styles.css";
+import buttonStyles from "./shared/button/button.css";
+import navigationStyles from "./shared/navigation/navigation.css";
+import layoutStyles from "./shared/layout/layout.css";
 import styleVariables from "./styles/variables.css";
 
 export const links: LinksFunction = () => {
@@ -22,6 +23,7 @@ export const links: LinksFunction = () => {
       href: "https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Open+Sans:wght@300;400&display=swap",
     },
     { rel: "stylesheet", href: styleVariables },
+    { rel: "stylesheet", href: buttonStyles },
     { rel: "stylesheet", href: navigationStyles },
     { rel: "stylesheet", href: layoutStyles },
   ];

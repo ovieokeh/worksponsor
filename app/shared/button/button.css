@@ -1,0 +1,23 @@
+.button {
+  background: none;
+  border-style: none;
+  border: 1px solid var(--color-brand);
+  font-size: 14px;
+  padding: var(--space-16);
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 200ms ease, background 200ms ease;
+  width: fit-content;
+}
+
+.button:hover,
+.button--primary:hover {
+  border-color: var(--color-grey-90);
+  background: var(--color-text-secondary);
+  color: var(--color-white);
+}
+
+.button--primary {
+  background: var(--color-brand);
+  color: var(--color-white);
+}

@@ -6,7 +6,7 @@ import { useLoaderData, Link } from "@remix-run/react";
 
 import { getCompanies } from "~/model/company.server";
 
-import companiesStyles from "~/styles/companies.css";
+import companiesStyles from "~/styles/pages/companies.css";
 
 type LoaderData = {
   companies: Company[];

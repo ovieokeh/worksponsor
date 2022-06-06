@@ -38,6 +38,8 @@ html {
   --z-index-bg: -1;
   --z-index-nav: 3;
   --z-index-nav-menu: 4;
+
+  --site-width: 1368px;
 }
 
 html, body {
@@ -58,7 +60,14 @@ h1 {
 
 h2 {
   --minFontSize: 26px;
-  --maxFontSize: 72px;
+  --maxFontSize: 48px;
+  --scaler: 5vw;
+  font-size: clamp( var(--minFontSize), var(--scaler), var(--maxFontSize));
+}
+
+p {
+  --minFontSize: 12px;
+  --maxFontSize: 18px;
   --scaler: 5vw;
   font-size: clamp( var(--minFontSize), var(--scaler), var(--maxFontSize));
 }
