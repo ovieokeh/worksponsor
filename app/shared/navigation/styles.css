@@ -52,7 +52,7 @@
 }
 
 .nav__link {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
   text-decoration: none;
   color: var(--color-brand);
@@ -144,8 +144,6 @@
   }
 
   .nav__link {
-    font-size: 12px;
-    text-decoration: none;
     padding: var(--space-8);
     transition: all 250ms ease;
   }
