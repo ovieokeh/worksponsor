@@ -1,0 +1,15 @@
+.layout {
+  background: var(--color-background);
+}
+.layout__main {
+  background: var(--color-background);
+  min-height: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 100px var(--space-16) 0;
+}
+@media screen and (min-width: 768px) {
+  .layout__main {
+    padding: var(--space-16) var(--space-56);
+  }
+}

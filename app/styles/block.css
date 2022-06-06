@@ -1,11 +1,3 @@
-.homepage {
-  position: relative;
-  max-width: 800px;
-  width: 100%;
-  margin: auto;
-  height: 100vh;
-}
-
 .block--left {
   display: block;
   /* pointer-events: none; */
@@ -17,7 +9,7 @@
   left: 0;
   bottom: 0;
   width: 30%;
-  z-index: var(--z-index-bg);
+  /* z-index: var(--z-index-bg); */
 }
 
 .block--bottom {
@@ -32,7 +24,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: var(--z-index-bg);
+  /* z-index: var(--z-index-bg); */
 }
 
 .block--top-right {
@@ -49,7 +41,7 @@
   width: 30px;
   height: 30px;
 
-  z-index: var(--z-index-bg);
+  /* z-index: var(--z-index-bg); */
 }
 
 @media screen and (max-width: 450px) {
