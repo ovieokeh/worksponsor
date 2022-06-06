@@ -62,3 +62,7 @@ h2 {
   --scaler: 5vw;
   font-size: clamp( var(--minFontSize), var(--scaler), var(--maxFontSize));
 }
+
+.no-scroll {
+  overflow: hidden;
+}
