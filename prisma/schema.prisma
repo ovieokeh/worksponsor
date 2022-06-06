@@ -1,0 +1,32 @@
+datasource db {
+  provider = "postgres"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model CompanyContact {
+  companyId    String @unique
+  email        String
+  phoneNumbers String
+}
+
+model CompanySocials {
+  companyId String @unique
+  facebook  String
+  linkedin  String
+  twitter   String
+}
+
+model Company {
+  id          String   @id @default(cuid())
+  category    String
+  createdAt   DateTime @default(now())
+  description String
+  foundedYear String
+  kvk         String   @unique
+  name        String
+  updatedAt   DateTime @updatedAt
+}
