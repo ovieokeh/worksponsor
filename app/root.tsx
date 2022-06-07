@@ -1,4 +1,5 @@
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
+import type { CatchBoundaryComponent } from "@remix-run/react/routeModules";
 import {
   Links,
   LiveReload,
@@ -6,16 +7,19 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useCatch,
 } from "@remix-run/react";
 
 import Layout from "./shared/layout";
 import Navigation from "./shared/navigation";
 import Footer from "./shared/footer";
+import Construction from "./shared/construction";
 
 import buttonStyles from "./shared/button/button.css";
 import navigationStyles from "./shared/navigation/navigation.css";
 import footerStyles from "./shared/footer/footer.css";
 import layoutStyles from "./shared/layout/layout.css";
+import constructionStyles from "./shared/construction/construction.css";
 import styleVariables from "./styles/variables.css";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
@@ -30,6 +34,7 @@ export const links: LinksFunction = () => {
     { rel: "stylesheet", href: buttonStyles },
     { rel: "stylesheet", href: navigationStyles },
     { rel: "stylesheet", href: footerStyles },
+    { rel: "stylesheet", href: constructionStyles },
   ];
 };
 
@@ -38,6 +43,26 @@ export const meta: MetaFunction = () => ({
   title: "WorkSponsor | Relocate to the Netherlands",
   viewport: "width=device-width,initial-scale=1",
 });
+
+export const CatchBoundary: CatchBoundaryComponent = () => {
+  return (
+    <html>
+      <head>
+        <title>Oh no!</title>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <Navigation />
+        <Layout>
+          <Construction />
+        </Layout>
+        <Footer />
+        <Scripts />
+      </body>
+    </html>
+  );
+};
 
 export default function App() {
   return (

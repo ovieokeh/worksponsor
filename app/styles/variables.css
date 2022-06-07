@@ -2,7 +2,7 @@ html {
   --color-grey: #edede9;
   --color-grey-90: #d5bdaf;
   --color-brand: #d34e04;
-  --color-black: #000000;
+  --color-black: #471900;
   --color-grey: #f9f4ef;
   --color-white: #ffffff;
   --box-shadow: #0a192f;
@@ -44,6 +44,7 @@ html {
 }
 
 html, body {
+  color: var(--color-black);
   margin: 0;
   padding: 0;
   box-sizing: border-box;

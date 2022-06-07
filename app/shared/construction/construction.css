@@ -1,0 +1,16 @@
+.construction {
+  height: 100%;
+  margin-bottom: 100px;
+}
+
+.construction__ctas {
+  display: flex;
+  gap: var(--space-12);
+  margin-top: var(--space-32);
+}
+
+@media screen and (min-width: 768px) {
+  .construction {
+    min-height: 600px;
+  }
+}

@@ -3,8 +3,6 @@ import type { Company } from "@prisma/client";
 import { useActionData } from "@remix-run/react";
 import { json } from "@remix-run/server-runtime";
 
-// import { useLoaderData } from "@remix-run/react";
-
 import Button from "~/shared/button";
 import Waitlist from "~/shared/waitlist";
 
@@ -87,7 +85,7 @@ export function links() {
 }
 export default function Index() {
   const actionData = useActionData();
-  console.log(actionData);
+
   return (
     <main className="homepage">
       <IntroHero />
