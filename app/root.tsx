@@ -7,7 +7,6 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useCatch,
 } from "@remix-run/react";
 
 import Layout from "./shared/layout";
@@ -58,6 +57,7 @@ export const CatchBoundary: CatchBoundaryComponent = () => {
           <Construction />
         </Layout>
         <Footer />
+        <ScrollRestoration />
         <Scripts />
       </body>
     </html>
