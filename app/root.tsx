@@ -10,11 +10,14 @@ import {
 
 import Layout from "./shared/layout";
 import Navigation from "./shared/navigation";
+import Footer from "./shared/footer";
 
 import buttonStyles from "./shared/button/button.css";
 import navigationStyles from "./shared/navigation/navigation.css";
+import footerStyles from "./shared/footer/footer.css";
 import layoutStyles from "./shared/layout/layout.css";
 import styleVariables from "./styles/variables.css";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 export const links: LinksFunction = () => {
   return [
@@ -23,9 +26,10 @@ export const links: LinksFunction = () => {
       href: "https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Open+Sans:wght@300;400&display=swap",
     },
     { rel: "stylesheet", href: styleVariables },
+    { rel: "stylesheet", href: layoutStyles },
     { rel: "stylesheet", href: buttonStyles },
     { rel: "stylesheet", href: navigationStyles },
-    { rel: "stylesheet", href: layoutStyles },
+    { rel: "stylesheet", href: footerStyles },
   ];
 };
 
@@ -47,6 +51,7 @@ export default function App() {
         <Layout>
           <Outlet />
         </Layout>
+        <Footer />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

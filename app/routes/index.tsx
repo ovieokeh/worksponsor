@@ -1,15 +1,20 @@
-import type { LoaderFunction } from "@remix-run/server-runtime";
+import type { ActionFunction, LoaderFunction } from "@remix-run/server-runtime";
 import type { Company } from "@prisma/client";
-// import type { FC, ReactNode } from "react";
-
+import { useActionData } from "@remix-run/react";
 import { json } from "@remix-run/server-runtime";
+
 // import { useLoaderData } from "@remix-run/react";
 
+import Button from "~/shared/button";
+import Waitlist from "~/shared/waitlist";
+
 import { getCompanies } from "~/model/company.server";
+import { addWaitlist } from "~/model/waitlist.server";
 
 import homepageStyles from "~/styles/pages/homepage.css";
-import styles from "~/styles/block.css";
-import Button from "~/shared/button";
+import waitlistStyles from "~/shared/waitlist/waitlist.css";
+
+const EMAIL_VALIDATION_REGEX = /^\w+([.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
 type LoaderData = {
   companies: Company[];
@@ -58,35 +63,38 @@ const IntroHero = () => {
   );
 };
 
-// const WaitlistForm = () => {
-//   const submitText = "Join waitlist";
-//   const placeholderText = "you@email.com";
+export const action: ActionFunction = async ({ request }) => {
+  const formData = await request.formData();
+  const email = formData.get("email")?.toString();
 
-//   return (
-//     <form className="waitlist-form">
-//       <input
-//         className="waitlist-input"
-//         type="email"
-//         placeholder={placeholderText}
-//         required
-//       />
-//       <button className="waitlist-submit" type="submit">
-//         {submitText}
-//       </button>
-//     </form>
-//   );
-// };
+  if (!email) {
+    return json({ error: "email_empty" });
+  }
+
+  if (!email.match(EMAIL_VALIDATION_REGEX)) {
+    return json({ error: "email_invalid" });
+  }
+
+  const waitlistedEmail = await addWaitlist(email);
+  return waitlistedEmail;
+};
 
 export function links() {
   return [
-    { rel: "stylesheet", href: styles },
+    { rel: "stylesheet", href: waitlistStyles },
     { rel: "stylesheet", href: homepageStyles },
   ];
 }
 export default function Index() {
+  const actionData = useActionData();
+  console.log(actionData);
   return (
     <main className="homepage">
       <IntroHero />
+      <Waitlist
+        success={typeof actionData === "boolean" && actionData}
+        error={actionData?.error}
+      />
     </main>
   );
 }

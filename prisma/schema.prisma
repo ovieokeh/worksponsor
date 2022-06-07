@@ -30,3 +30,8 @@ model Company {
   name        String
   updatedAt   DateTime @updatedAt
 }
+
+model Waitlist {
+  createdAt DateTime @default(now())
+  email     String   @unique
+}

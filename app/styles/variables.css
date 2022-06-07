@@ -1,7 +1,7 @@
 html {
   --color-grey: #edede9;
   --color-grey-90: #d5bdaf;
-  --color-brand: #223579;
+  --color-brand: #d34e04;
   --color-black: #000000;
   --color-grey: #f9f4ef;
   --color-white: #ffffff;
@@ -9,8 +9,9 @@ html {
   --color-background: #ffffff;
   --color-secondary: #545e6e;
   --color-text-primary: #0a192f;
-  --color-text-secondary: #d54040;
-  --color-text-tertiary: #ffb264;
+  --color-text-secondary: #d34e04;
+  --color-text-error: #ff0033;
+  --color-text-success: #209651;
 
   --space-4: 4px;
   --space-8: calc(var(--space-4) * 2);

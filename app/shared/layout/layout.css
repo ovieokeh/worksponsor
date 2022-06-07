@@ -6,6 +6,7 @@
   min-height: 100%;
   max-width: var(--site-width);
   margin: 0 auto;
+  margin-top: var(--space-56);
   padding: calc(var(--space-40) * 2) var(--space-16) 0;
 }
 @media screen and (min-width: 768px) {
