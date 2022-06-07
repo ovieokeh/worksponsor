@@ -25,10 +25,10 @@ export const loader: LoaderFunction = async ({ request, params }) => {
 const IntroHero = () => {
   const heroHeading = `Sponsored jobs in the Netherlands you won't find anywhere else`;
   const heroDescription = `
-  Join the #1 job platform specialized in visa-sponsored opportunities in the Netherlands
-  & gain access to useful content to help you relocate`;
-  const heroCompaniesCTA = "Browse companies";
-  const heroJobsCTA = "View sponsored jobs";
+  Explore verified visa sponsors, browse through available jobs,
+  or create a personalised profile to help you land your preferred role.`;
+  const heroJobsCTA = "Browse jobs";
+  const heroProfileCTA = "Create personalised profile";
 
   return (
     <section className="home__hero">
@@ -37,13 +37,13 @@ const IntroHero = () => {
         <p className="home__hero-description">{heroDescription}</p>
 
         <div className="home__hero-ctas">
-          <Button as="link" href="/jobs" text={heroJobsCTA} />
           <Button
             as="link"
-            href="/companies"
-            text={heroCompaniesCTA}
+            href="/jobs"
+            text={heroJobsCTA}
             variant="secondary"
           />
+          <Button as="link" href="/profile" text={heroProfileCTA} />
         </div>
       </div>
 
