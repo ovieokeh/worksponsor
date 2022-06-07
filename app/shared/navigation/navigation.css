@@ -38,7 +38,7 @@
   justify-content: center;
   gap: var(--space-20);
   text-align: center;
-  background-color: var(--color-background);
+  background-color: var(--color-grey);
   position: fixed;
   right: 0;
   bottom: 0;
