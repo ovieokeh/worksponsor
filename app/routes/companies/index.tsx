@@ -6,6 +6,8 @@ import { useLoaderData, Link } from "@remix-run/react";
 
 import { getCompanies } from "~/model/company.server";
 
+import { useGatedContent } from "hooks/useGatedContent";
+
 import companiesStyles from "~/styles/pages/companies.css";
 
 type LoaderData = {
@@ -23,6 +25,7 @@ export const loader: LoaderFunction = async ({ request, params }) => {
 export function links() {
   return [{ rel: "stylesheet", href: companiesStyles }];
 }
+
 export default function Companies() {
   const { companies } = useLoaderData() as LoaderData;
 
@@ -40,5 +43,9 @@ export default function Companies() {
     }
   );
 
-  return <main className="companies">{renderedCompanies}</main>;
+  const render = useGatedContent(
+    <main className="companies">{renderedCompanies}</main>
+  );
+
+  return render;
 }

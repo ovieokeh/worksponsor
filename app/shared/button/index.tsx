@@ -11,6 +11,7 @@ type ButtonProps = {
   disabled?: boolean;
   isLoading?: boolean;
   onClick?: React.MouseEventHandler;
+  [x: string]: any;
 };
 export default function Button({
   as = "button",
@@ -22,6 +23,7 @@ export default function Button({
   isLoading,
   text,
   onClick,
+  ...rest
 }: ButtonProps) {
   if (as === "link" && href) {
     return (
@@ -30,6 +32,7 @@ export default function Button({
           disabled ? "button--disabled" : ""
         } ${className}`}
         to={href}
+        {...rest}
       >
         {text}
         {isLoading && <Rings height={18} width={18} color="#d34e04" />}
@@ -45,6 +48,7 @@ export default function Button({
         disabled ? "button--disabled" : ""
       } ${className}`}
       disabled={disabled}
+      {...rest}
     >
       {text}
       {isLoading && <Rings height={18} width={18} color="#d34e04" />}

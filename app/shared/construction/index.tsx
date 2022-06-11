@@ -17,7 +17,13 @@ export default function Construction() {
 
       <div className="construction__ctas">
         <Button onClick={() => history.go(-1)} text="Previous page" />
-        <Button as="link" href="/" text="Homepage" variant="secondary" />
+        <Button
+          as="link"
+          href="/"
+          text="Homepage"
+          variant="secondary"
+          rel="prefetch"
+        />
       </div>
     </div>
   );
