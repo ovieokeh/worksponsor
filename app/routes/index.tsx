@@ -1,6 +1,5 @@
 import type { ActionFunction, LoaderFunction } from "@remix-run/server-runtime";
 import type { Company } from "@prisma/client";
-import { useActionData } from "@remix-run/react";
 import { json } from "@remix-run/server-runtime";
 
 import Button from "~/shared/button";
@@ -11,6 +10,7 @@ import { addWaitlist } from "~/model/waitlist.server";
 
 import homepageStyles from "~/styles/pages/homepage.css";
 import waitlistStyles from "~/shared/waitlist/waitlist.css";
+import sleep from "utils/sleep";
 
 const EMAIL_VALIDATION_REGEX = /^\w+([.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
@@ -22,6 +22,8 @@ export const loader: LoaderFunction = async ({ request, params }) => {
   if (!companies) {
     throw new Response("Not Found", { status: 404 });
   }
+
+  await sleep(500);
   return json<LoaderData>({ companies });
 };
 
@@ -66,15 +68,22 @@ export const action: ActionFunction = async ({ request }) => {
   const email = formData.get("email")?.toString();
 
   if (!email) {
-    return json({ error: "email_empty" });
+    return json({ result: "bad", error: "email_empty" });
   }
 
   if (!email.match(EMAIL_VALIDATION_REGEX)) {
-    return json({ error: "email_invalid" });
+    return json({ result: "bad", error: "email_invalid" });
   }
 
-  const waitlistedEmail = await addWaitlist(email);
-  return waitlistedEmail;
+  try {
+    const waitlistedEmail = await addWaitlist(email);
+    return { result: "ok", data: waitlistedEmail };
+  } catch (error) {
+    return {
+      result: "bad",
+      error: (error as any).code === "P2002" ? "conflict" : "unknown",
+    };
+  }
 };
 
 export function links() {
@@ -84,15 +93,10 @@ export function links() {
   ];
 }
 export default function Index() {
-  const actionData = useActionData();
-
   return (
     <main className="homepage">
       <IntroHero />
-      <Waitlist
-        success={typeof actionData === "boolean" && actionData}
-        error={actionData?.error}
-      />
+      <Waitlist />
     </main>
   );
 }

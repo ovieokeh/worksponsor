@@ -30,23 +30,21 @@
 
 .footer__copyright {
   color: var(--color-grey);
-  font-size: 14px;
+  font-size: 12px;
   margin-bottom: 0;
   opacity: 0.5;
 }
 
 @media screen and (min-width: 768px) {
   .footer {
-    align-items: center;
     justify-content: space-between;
-  }
-
-  .footer__links {
-    align-items: center;
-    flex-direction: row;
   }
 
   .footer__link {
     font-size: 16px;
+  }
+
+  .footer__copyright {
+    font-size: 14px;
   }
 }
