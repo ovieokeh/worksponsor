@@ -8,7 +8,6 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import { redirect } from "@remix-run/server-runtime";
 
 import Layout from "./shared/layout";
 import Navigation from "./shared/navigation";
@@ -69,9 +68,26 @@ export default function App() {
   if (
     typeof window !== "undefined" &&
     location.pathname !== "/" &&
-    location.pathname.includes("worksponsor")
+    location.host.includes("worksponsor")
   ) {
-    redirect("/");
+    return (
+      <html lang="en">
+        <head>
+          <Meta />
+          <Links />
+        </head>
+        <body>
+          <Navigation />
+          <Layout>
+            <Construction />
+          </Layout>
+          <Footer />
+          <ScrollRestoration />
+          <Scripts />
+          <LiveReload />
+        </body>
+      </html>
+    );
   }
 
   return (
