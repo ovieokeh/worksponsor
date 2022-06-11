@@ -14,13 +14,19 @@ export default function Waitlist() {
   const emailInput = useRef<HTMLInputElement>(null);
   const [state, setState] = useState<string>(fetcher.type);
 
+  const isLoading = fetcher.state === "loading";
+  const isSubscribed = state === "done" && fetcher.data?.result === "ok";
+  const hasError = state === "done" && fetcher.data?.result === "bad";
+
   useEffect(() => {
-    if (fetcher.data?.result !== "ok") {
+    setState(fetcher.type);
+  }, [fetcher.type]);
+
+  useEffect(() => {
+    if (hasError) {
       emailInput.current?.focus();
     }
-
-    setState(fetcher.type);
-  }, [fetcher]);
+  }, [hasError]);
 
   const descriptionText =
     "Join the waitlist to get first access to the platform as well as extra perks planned in the upcoming roadmap";
@@ -35,10 +41,6 @@ export default function Waitlist() {
   };
 
   const errorText = ERROR_TEXT_MAPPING[fetcher.data?.error] || "";
-
-  const isLoading = fetcher.state === "loading";
-  const isSubscribed = state === "done" && fetcher.data?.result === "ok";
-  const hasError = state === "done" && fetcher.data?.result === "bad";
 
   return (
     <div className={`waitlist ${isLoading ? "waitlist--loading" : ""}`}>
