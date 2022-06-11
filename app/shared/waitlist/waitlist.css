@@ -12,10 +12,6 @@
   opacity: 0.7;
 }
 
-.waitlist__form {
-  padding: var(--space-12) var(--space-24);
-}
-
 .waitlist__form-inputs {
   border-style: none;
   display: flex;
@@ -52,6 +48,10 @@
   .waitlist {
     max-width: 950px;
     width: 100%;
+  }
+
+  .waitlist__form {
+    padding: var(--space-12) var(--space-24);
   }
 
   .waitlist__description {
