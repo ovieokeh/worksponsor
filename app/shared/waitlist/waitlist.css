@@ -11,10 +11,17 @@
   margin-bottom: var(--space-12);
   opacity: 0.7;
 }
+
 .waitlist__form {
+  padding: var(--space-12) var(--space-24);
+}
+
+.waitlist__form-inputs {
+  border-style: none;
   display: flex;
   flex-direction: column;
   gap: var(--space-12);
+  padding: 0;
 }
 .waitlist__input {
   border-style: none;
@@ -52,18 +59,20 @@
     margin-bottom: 0;
   }
   
-  .waitlist__description,
-  .waitlist__error,
-  .waitlist__success {
+  .waitlist__description {
     padding: 0 var(--space-24);
   }
 
-  .waitlist__form {
+  .waitlist__form-inputs {
     flex-direction: row;
-    padding: var(--space-12) var(--space-24);
   }
 
   .waitlist__input {
     font-size: 16px;
   }
+}
+
+.hidden {
+  visibility: hidden;
+  height: 0;
 }

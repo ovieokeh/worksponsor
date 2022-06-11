@@ -6,7 +6,7 @@ type ButtonProps = {
   text: string;
   href?: string;
   variant?: "primary" | "secondary";
-  type?: "button" | "submit";
+  type?: "button" | "submit" | "reset";
   className?: string;
   disabled?: boolean;
   isLoading?: boolean;

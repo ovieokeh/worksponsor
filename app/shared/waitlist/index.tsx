@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useFetcher } from "@remix-run/react";
 
 import Button from "../button";
@@ -10,12 +10,16 @@ const render = (condition: boolean, component: any) => {
 
 export default function Waitlist() {
   const fetcher = useFetcher();
+  const form = useRef<HTMLFormElement>(null);
   const emailInput = useRef<HTMLInputElement>(null);
+  const [state, setState] = useState<string>(fetcher.type);
 
   useEffect(() => {
     if (fetcher.data?.result !== "ok") {
       emailInput.current?.focus();
     }
+
+    setState(fetcher.type);
   }, [fetcher]);
 
   const descriptionText =
@@ -27,21 +31,23 @@ export default function Waitlist() {
   const ERROR_TEXT_MAPPING: { [x: string]: string } = {
     email_invalid: "Invalid email. Please try again with a valid email",
     conflict: "It seems like you're already subscribed with this email",
+    unknown: "An error occurred. Please try again later",
   };
 
   const errorText = ERROR_TEXT_MAPPING[fetcher.data?.error] || "";
 
   const isLoading = fetcher.state === "loading";
-  const isSubscribed = fetcher.type === "done" && fetcher.data?.result === "ok";
-  const hasError = fetcher.type === "done" && fetcher.data?.result === "bad";
+  const isSubscribed = state === "done" && fetcher.data?.result === "ok";
+  const hasError = state === "done" && fetcher.data?.result === "bad";
 
   return (
     <div className={`waitlist ${isLoading ? "waitlist--loading" : ""}`}>
       <p className="waitlist__description">{descriptionText}</p>
 
-      {render(
-        !isSubscribed,
-        <fetcher.Form className="waitlist__form" method="post">
+      <fetcher.Form ref={form} className="waitlist__form" method="post">
+        <fieldset
+          className={`waitlist__form-inputs ${isSubscribed ? "hidden" : ""}`}
+        >
           <input
             ref={emailInput}
             className="waitlist__input"
@@ -59,14 +65,29 @@ export default function Waitlist() {
             disabled={isLoading}
             isLoading={isLoading}
           />
-        </fetcher.Form>
-      )}
+        </fieldset>
 
-      {render(
-        isSubscribed,
-        <p className="waitlist__success">{subscribedText}</p>
-      )}
-      {render(hasError, <p className="waitlist__success">{errorText}</p>)}
+        <div>
+          {render(
+            isSubscribed,
+            <>
+              <p className="waitlist__success">{subscribedText}</p>
+              <Button
+                text="Subscribe another email"
+                variant="secondary"
+                onClick={() => {
+                  setState("idle");
+
+                  form.current?.reset();
+                  emailInput.current?.focus();
+                }}
+              />
+            </>
+          )}
+
+          {render(hasError, <p className="waitlist__error">{errorText}</p>)}
+        </div>
+      </fetcher.Form>
     </div>
   );
 }
