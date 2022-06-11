@@ -11,6 +11,7 @@ contactsApi.setApiKey(
 export async function addWaitlist(email: string): Promise<boolean> {
   try {
     createContact.email = email;
+    createContact.listIds = [5]; // Waitlist list in SendInBlue
 
     return contactsApi.createContact(createContact).then((result: any) => {
       return result.body;

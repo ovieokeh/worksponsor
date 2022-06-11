@@ -8,6 +8,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import { redirect } from "@remix-run/server-runtime";
 
 import Layout from "./shared/layout";
 import Navigation from "./shared/navigation";
@@ -65,6 +66,14 @@ export const CatchBoundary: CatchBoundaryComponent = () => {
 };
 
 export default function App() {
+  if (
+    typeof window !== "undefined" &&
+    location.pathname !== "/" &&
+    location.pathname.includes("worksponsor")
+  ) {
+    redirect("/");
+  }
+
   return (
     <html lang="en">
       <head>
