@@ -20,11 +20,13 @@ import Navigation from "./components/navigation";
 import Footer from "./components/footer";
 import Construction from "./components/construction";
 
-import buttonStyles from "./shared/button/button.css";
-import navigationStyles from "./shared/navigation/navigation.css";
-import footerStyles from "./shared/footer/footer.css";
-import layoutStyles from "./shared/layout/layout.css";
-import constructionStyles from "./shared/construction/construction.css";
+import buttonStyles from "./components/button/button.css";
+import navigationStyles from "./components/navigation/navigation.css";
+import containerStyles from "./components/container/container.css";
+import footerStyles from "./components/footer/footer.css";
+import layoutStyles from "./components/layout/layout.css";
+import constructionStyles from "./components/construction/construction.css";
+import filterStyles from "./components/filter/filter.css";
 import styleVariables from "./styles/variables.css";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
@@ -59,6 +61,8 @@ export const links: LinksFunction = () => {
     { rel: "stylesheet", href: layoutStyles },
     { rel: "stylesheet", href: buttonStyles },
     { rel: "stylesheet", href: navigationStyles },
+    { rel: "stylesheet", href: containerStyles },
+    { rel: "stylesheet", href: filterStyles },
     { rel: "stylesheet", href: footerStyles },
     { rel: "stylesheet", href: constructionStyles },
   ];

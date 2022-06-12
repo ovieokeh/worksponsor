@@ -1,4 +1,5 @@
 import Button from "../button";
+import Container from "../container";
 
 export default function Construction() {
   const titleText = "Hi there";
@@ -7,24 +8,26 @@ export default function Construction() {
 
   return (
     <div className="construction">
-      <h2 className="construction__title">{titleText}</h2>
+      <Container>
+        <h2 className="construction__title">{titleText}</h2>
 
-      {descriptionText.split("\n").map((p) => (
-        <p key={p} className="construction__description">
-          {p}
-        </p>
-      ))}
+        {descriptionText.split("\n").map((p) => (
+          <p key={p} className="construction__description">
+            {p}
+          </p>
+        ))}
 
-      <div className="construction__ctas">
-        <Button onClick={() => history.go(-1)} text="Previous page" />
-        <Button
-          as="link"
-          href="/"
-          text="Homepage"
-          variant="secondary"
-          rel="prefetch"
-        />
-      </div>
+        <div className="construction__ctas">
+          <Button onClick={() => history.go(-1)} text="Previous page" />
+          <Button
+            as="link"
+            href="/"
+            text="Homepage"
+            variant="secondary"
+            rel="prefetch"
+          />
+        </div>
+      </Container>
     </div>
   );
 }

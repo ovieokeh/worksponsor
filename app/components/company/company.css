@@ -1,0 +1,46 @@
+.company {
+  padding: var(--space-12);
+  border: 1px solid var(--color-grey);
+  border-radius: var(--border-radius-8);
+  margin: var(--space-20) 0;
+
+  --tw-shadow: 0px 20px 24px -4px rgba(16,24,40,0.1),0px 8px 8px -4px rgba(16,24,40,0.04);
+  --tw-ring-offset-shadow: 0 0 transparent;
+  --tw-ring-shadow: 0 0 transparent;
+}
+
+.company__link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.company:hover {
+  box-shadow: var(--tw-ring-offset-shadow,0 0 transparent),var(--tw-ring-shadow,0 0 transparent),var(--tw-shadow);
+}
+
+.company__meta {
+  display: flex;
+  align-items: center;
+  padding-left: var(--space-12);
+}
+
+.company__icon {
+  padding-right: var(--space-12);
+  opacity: 0.7;
+}
+
+.company__name {
+  font-weight: 600;
+}
+
+.company__description {
+  color: var(--color-secondary);
+  line-height: 32px;
+  font-size: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .company__details {
+    padding-left: var(--space-48);
+  }
+}

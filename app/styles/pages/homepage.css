@@ -6,12 +6,15 @@
 }
 
 .home__hero {
+  background: var(--color-grey);
+}
+
+.home__hero-content {
   display: flex;
   flex-direction: column-reverse;
 }
 
 .home__hero-heading {
-  color: var(--color-text-secondary);
   margin-top: var(--space-20);
 }
 
@@ -30,12 +33,14 @@
 
 @media screen and (min-width: 768px) {
   .home__hero {
+  }
+  .home__hero-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-top: calc(var(--space-40) * 2);
     margin-bottom: calc(var(--space-40) * 3);
   }
-  .home__hero > div {
+  .home__hero-content > div {
     display: flex;
     flex-direction: column;
     align-items: flex-start;

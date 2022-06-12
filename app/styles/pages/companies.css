@@ -1,0 +1,6 @@
+@media screen and (min-width: 768px) {
+  .companies__content {
+    display: grid;
+    grid-template-columns: 65% 35%;
+  }
+}

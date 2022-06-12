@@ -7,6 +7,10 @@
   min-height: 80px;
 }
 
+.footer__content {
+  max-width: var(--site-width);
+}
+
 .footer__links {
   display: flex;
   flex-direction: column;

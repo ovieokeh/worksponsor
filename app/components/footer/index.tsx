@@ -42,8 +42,10 @@ export default function Footer() {
 
   return (
     <section className="footer">
-      <div className="footer__links">{renderedLinks}</div>
-      <p className="footer__copyright">{copyrightText}</p>
+      <div className="footer__content">
+        <div className="footer__links">{renderedLinks}</div>
+        <p className="footer__copyright">{copyrightText}</p>
+      </div>
     </section>
   );
 }
