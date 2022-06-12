@@ -2,8 +2,8 @@ import type { ActionFunction, LoaderFunction } from "@remix-run/server-runtime";
 import type { Company } from "@prisma/client";
 import { json } from "@remix-run/server-runtime";
 
-import Button from "~/shared/button";
-import Waitlist from "~/shared/waitlist";
+import Button from "~/components/button";
+import Waitlist from "~/components/waitlist";
 
 import { getCompanies } from "~/model/company.server";
 import { addWaitlist } from "~/model/waitlist.server";

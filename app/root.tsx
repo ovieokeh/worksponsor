@@ -15,10 +15,10 @@ import {
 } from "@remix-run/react";
 import { json } from "@remix-run/server-runtime";
 
-import Layout from "./shared/layout";
-import Navigation from "./shared/navigation";
-import Footer from "./shared/footer";
-import Construction from "./shared/construction";
+import Layout from "./components/layout";
+import Navigation from "./components/navigation";
+import Footer from "./components/footer";
+import Construction from "./components/construction";
 
 import buttonStyles from "./shared/button/button.css";
 import navigationStyles from "./shared/navigation/navigation.css";

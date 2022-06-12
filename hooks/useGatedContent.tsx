@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import Construction from "~/shared/construction";
+import Construction from "~/components/construction";
 import { useIsomorphicLayoutEffect } from "./useIsomorphicLayoutEffect";
 
 export function useGatedContent(content: any) {
