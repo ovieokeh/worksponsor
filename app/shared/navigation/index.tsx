@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "@remix-run/react";
+import { NavLink } from "@remix-run/react";
 
 import MenuIcon from "./MenuIcon";
 
@@ -84,14 +84,14 @@ export default function Navigation() {
     }`.trim();
 
     return (
-      <Link
+      <NavLink
         key={link.href}
         to={link.href}
         onClick={handleMenuToggle}
         className={linkClassname}
       >
         {link.name}
-      </Link>
+      </NavLink>
     );
   });
 
@@ -102,9 +102,9 @@ export default function Navigation() {
   return (
     <nav className="nav" style={menuStyles}>
       <div className="nav__content">
-        <Link to="/" className="nav__brand" aria-label="Homepage link">
+        <NavLink to="/" className="nav__brand" aria-label="Homepage link">
           <img src="/logo.svg" alt="WorkSponsor logo" />
-        </Link>
+        </NavLink>
 
         <MenuIcon isToggled={isMenuToggled} onToggle={handleMenuToggle} />
 

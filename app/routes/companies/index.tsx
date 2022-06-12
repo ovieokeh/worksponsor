@@ -29,19 +29,16 @@ export function links() {
 export default function Companies() {
   const { companies } = useLoaderData() as LoaderData;
 
-  const renderedCompanies = companies.map(
-    ({ id, name, description, category }) => {
-      return (
-        <Link key={id} to={`/companies/${id}`} className="companies__item">
-          <div className="companies__item-details">
-            <p className="companies__item-name">{name}</p>
-            <p className="companies__item-description">{description}</p>
-          </div>
-          <p className="companies__item-category">{category}</p>
-        </Link>
-      );
-    }
-  );
+  const renderedCompanies = companies.map(({ id, name, description }) => {
+    return (
+      <Link key={id} to={`/companies/${id}`} className="companies__item">
+        <div className="companies__item-details">
+          <p className="companies__item-name">{name}</p>
+          <p className="companies__item-description">{description}</p>
+        </div>
+      </Link>
+    );
+  });
 
   const render = useGatedContent(
     <main className="companies">{renderedCompanies}</main>

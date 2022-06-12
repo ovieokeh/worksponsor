@@ -26,7 +26,7 @@ export function links() {
 export default function Company() {
   const { company } = useLoaderData() as LoaderData;
   const {
-    details: { name, description, category },
+    details: { name, description },
   } = company;
 
   return (
@@ -35,7 +35,6 @@ export default function Company() {
         <p className="companies__item-name">{name}</p>
         <p className="companies__item-description">{description}</p>
       </div>
-      <p className="companies__item-category">{category}</p>
     </main>
   );
 }
