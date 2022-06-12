@@ -1,45 +1,40 @@
 import type { Company, CompanyContact, CompanySocials } from "@prisma/client";
 
+import fs from "fs";
+import path from "path";
 import { PrismaClient } from "@prisma/client";
-import {
-  randCompanyName,
-  randEmail,
-  randNumber,
-  randPhoneNumber,
-  randProductDescription,
-  randUrl,
-} from "@ngneat/falso";
+import { randEmail, randPhoneNumber, randUrl } from "@ngneat/falso";
+import csv from "csv-parser";
 
 type GeneratedCompany = Omit<Company, "id" | "createdAt" | "updatedAt">;
 
-function randomDate(start: Date, end: Date) {
-  return new Date(
-    start.getTime() + Math.random() * (end.getTime() - start.getTime())
-  )
-    .getFullYear()
-    .toString();
-}
-
-const categories = [
-  "Technology",
-  "Travel",
-  "Manufacturing",
-  "Consulatancy",
-  "Weather",
-  "Media",
-  "ECommerce",
-  "Fintech",
-];
 function generateCompanies(length = 20): GeneratedCompany[] {
-  const companies = new Array(length).fill(randNumber()).map(() => ({
-    category: categories[Math.floor(Math.random() * categories.length)],
-    description: randProductDescription(),
-    foundedYear: randomDate(new Date(2000, 1, 1), new Date()),
-    kvk: randNumber().toString(),
-    name: randCompanyName(),
-  }));
+  const generatedCompanies: GeneratedCompany[] = [];
 
-  return companies;
+  let counter = 0;
+  fs.createReadStream(path.resolve("companies.csv"))
+    .pipe(csv())
+    .on("data", (data: any) => {
+      if (counter === length) return;
+
+      const company: GeneratedCompany = {
+        name: data.Company,
+        kvk: data["KvK nummer"],
+        description: data.Description || "unknown",
+        address: data.Address || "unknown",
+        websiteUrl: data["Website URL"] || "unknown",
+        foundedYear: data["Year founded"] || "unknown",
+        numOfEmployees: data["Number of employees"] || "unknown",
+      };
+      generatedCompanies.push(company);
+
+      counter += 1;
+    })
+    .on("end", () => {
+      console.info("companies generated");
+    });
+
+  return generatedCompanies;
 }
 
 function generateCompanySocials(companies: Company[]): CompanySocials[] {
@@ -66,7 +61,7 @@ function generateCompanyContacts(companies: Company[]): CompanyContact[] {
 const prisma = new PrismaClient();
 
 async function seed() {
-  const companies = generateCompanies();
+  const companies = generateCompanies(9087);
 
   try {
     await prisma.company.deleteMany();

@@ -21,12 +21,14 @@ model CompanySocials {
 }
 
 model Company {
-  id          String   @id @default(cuid())
-  category    String
-  createdAt   DateTime @default(now())
-  description String
-  foundedYear String
-  kvk         String   @unique
-  name        String
-  updatedAt   DateTime @updatedAt
+  id             String   @id @default(cuid())
+  createdAt      DateTime @default(now())
+  description    String
+  foundedYear    String
+  kvk            String   @unique
+  name           String
+  websiteUrl     String
+  numOfEmployees String
+  address        String
+  updatedAt      DateTime @updatedAt
 }
