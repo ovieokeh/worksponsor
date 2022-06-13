@@ -1,3 +1,9 @@
 .filter {
   background: var(--color-grey);
 }
+
+@media screen and (min-width: 768px) {
+  .filter__description {
+    max-width: 80%;
+  }
+}

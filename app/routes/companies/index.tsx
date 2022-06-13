@@ -13,6 +13,7 @@ import Company from "~/components/company";
 
 import companiesStyles from "~/styles/pages/companies.css";
 import companyStyles from "~/components/company/company.css";
+import Pagination from "~/components/pagination";
 
 type LoaderData = {
   companies: CompanyType[];
@@ -45,7 +46,9 @@ export default function Companies() {
       <Filter />
 
       <Container className="companies__content">
-        <div className="companies__list">{renderedCompanies}</div>
+        <div className="companies__list">
+          <Pagination count={100} render={<>{renderedCompanies}</>} />
+        </div>
       </Container>
     </main>
   );
