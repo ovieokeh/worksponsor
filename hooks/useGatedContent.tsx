@@ -7,18 +7,16 @@ export function useGatedContent(content: any) {
   let [render, setRender] = useState(<Construction />);
 
   useIsomorphicLayoutEffect(() => {
-    console.log("RAN");
+    const allowedPages = [
+      "http://localhost:3000/",
+      "http://localhost:3000/companies",
+      "https://worksponsor.nl/",
+      "https://www.worksponsor.nl/",
+    ];
 
     const shouldRender =
-      (typeof window !== "undefined" && !(window as any).ENV.IS_DEV) ||
-      [
-        "http://localhost:3000/",
-        "http://localhost:3000/companies",
-        "https://worksponsor.nl/",
-        "https://www.worksponsor.nl/",
-      ].some((url) => url === (window as any).ENV.URL);
-
-    console.log({ shouldRender, url: (window as any).ENV.URL });
+      typeof window !== "undefined" &&
+      allowedPages.some((pageUrl) => pageUrl === window.location.href);
 
     if (shouldRender) {
       setRender(content);

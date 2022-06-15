@@ -10,7 +10,7 @@
   padding: var(--space-16);
   cursor: pointer;
   text-decoration: none;
-  transition: color 200ms ease, background 200ms ease;
+  transition: color 200ms var(--transition-ease-cubic), background 200ms var(--transition-ease-cubic);
   width: fit-content;
 }
 

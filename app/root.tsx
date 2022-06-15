@@ -1,8 +1,4 @@
-import type {
-  LinksFunction,
-  MetaFunction,
-  LoaderFunction,
-} from "@remix-run/node";
+import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import type { CatchBoundaryComponent } from "@remix-run/react/routeModules";
 import {
   Links,
@@ -11,9 +7,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLoaderData,
 } from "@remix-run/react";
-import { json } from "@remix-run/server-runtime";
 
 import Layout from "./components/layout";
 import Navigation from "./components/navigation";
@@ -74,18 +68,7 @@ export const meta: MetaFunction = () => ({
   viewport: "width=device-width,initial-scale=1",
 });
 
-export const loader: LoaderFunction = ({ request }) => {
-  return json({
-    ENV: {
-      URL: request.url,
-      IS_DEV: process.env.IS_DEV,
-    },
-  });
-};
-
 export default function App() {
-  const data = useLoaderData();
-
   return (
     <html lang="en">
       <head>
@@ -112,11 +95,6 @@ export default function App() {
               gtag('js', new Date());
             
               gtag('config', 'G-XSRVPVJCML');`,
-          }}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.ENV = ${JSON.stringify(data.ENV)}`,
           }}
         />
         <Scripts />
