@@ -35,7 +35,7 @@ html {
   --border-radius-8: 8px;
   --border-radius-12: 12px;
 
-  --transition-ease-cubic: cubic-bezier(0.76, 0, 0.24, 1);
+  --transition-ease-cubic: ease;
 
   --z-index-bg: -1;
   --z-index-nav: 3;
