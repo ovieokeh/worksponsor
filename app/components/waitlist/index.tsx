@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useFetcher } from "@remix-run/react";
 
 import Button from "../button";
+import Animate from "../animate";
 
 const render = (condition: boolean, component: any) => {
   if (condition) return component;
@@ -43,53 +44,55 @@ export default function Waitlist() {
   const errorText = ERROR_TEXT_MAPPING[fetcher.data?.error] || "";
 
   return (
-    <div className={`waitlist ${isLoading ? "waitlist--loading" : ""}`}>
-      <p className="waitlist__description">{descriptionText}</p>
+    <Animate animation="ttb" duration={0.7}>
+      <div className={`waitlist ${isLoading ? "waitlist--loading" : ""}`}>
+        <p className="waitlist__description">{descriptionText}</p>
 
-      <fetcher.Form ref={form} className="waitlist__form" method="post">
-        <fieldset
-          className={`waitlist__form-inputs ${isSubscribed ? "hidden" : ""}`}
-        >
-          <input
-            ref={emailInput}
-            className="waitlist__input"
-            name="email"
-            type="email"
-            placeholder={placeholderText}
-            disabled={isLoading}
-            required
-          />
-          <Button
-            className="waitlist__submit"
-            type="submit"
-            variant="secondary"
-            text={submitText}
-            disabled={isLoading}
-            isLoading={isLoading}
-          />
-        </fieldset>
+        <fetcher.Form ref={form} className="waitlist__form" method="post">
+          <fieldset
+            className={`waitlist__form-inputs ${isSubscribed ? "hidden" : ""}`}
+          >
+            <input
+              ref={emailInput}
+              className="waitlist__input"
+              name="email"
+              type="email"
+              placeholder={placeholderText}
+              disabled={isLoading}
+              required
+            />
+            <Button
+              className="waitlist__submit"
+              type="submit"
+              variant="secondary"
+              text={submitText}
+              disabled={isLoading}
+              isLoading={isLoading}
+            />
+          </fieldset>
 
-        <div>
-          {render(
-            isSubscribed,
-            <>
-              <p className="waitlist__success">{subscribedText}</p>
-              <Button
-                text="Subscribe another email"
-                variant="secondary"
-                onClick={() => {
-                  setState("idle");
+          <div>
+            {render(
+              isSubscribed,
+              <>
+                <p className="waitlist__success">{subscribedText}</p>
+                <Button
+                  text="Subscribe another email"
+                  variant="secondary"
+                  onClick={() => {
+                    setState("idle");
 
-                  form.current?.reset();
-                  emailInput.current?.focus();
-                }}
-              />
-            </>
-          )}
+                    form.current?.reset();
+                    emailInput.current?.focus();
+                  }}
+                />
+              </>
+            )}
 
-          {render(hasError, <p className="waitlist__error">{errorText}</p>)}
-        </div>
-      </fetcher.Form>
-    </div>
+            {render(hasError, <p className="waitlist__error">{errorText}</p>)}
+          </div>
+        </fetcher.Form>
+      </div>
+    </Animate>
   );
 }

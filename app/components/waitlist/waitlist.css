@@ -1,7 +1,6 @@
 .waitlist {
   padding: var(--space-16);
-  margin: auto;
-  margin-top: var(--space-40);
+  margin: var(--space-40) auto;
 }
 .waitlist__description {
   font-size: 14px;

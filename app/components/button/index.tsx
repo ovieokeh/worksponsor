@@ -32,6 +32,7 @@ export default function Button({
           disabled ? "button--disabled" : ""
         } ${className}`}
         to={href}
+        prefetch="intent"
         {...rest}
       >
         {text}

@@ -89,6 +89,7 @@ export default function Navigation() {
         to={link.href}
         onClick={handleMenuToggle}
         className={linkClassname}
+        prefetch="intent"
       >
         {link.name}
       </NavLink>
@@ -102,7 +103,14 @@ export default function Navigation() {
   return (
     <nav className="nav" style={menuStyles}>
       <div className="nav__content">
-        <NavLink to="/" className="nav__brand" aria-label="Homepage link">
+        <NavLink
+          to="/"
+          className={`nav__brand ${
+            pathname === "/" ? "nav__brand--active" : ""
+          }`}
+          aria-label="Homepage link"
+          prefetch="intent"
+        >
           <img src="/logo.svg" alt="WorkSponsor logo" />
         </NavLink>
 

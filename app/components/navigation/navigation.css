@@ -19,12 +19,15 @@
 }
 
 .nav__brand {
-  color: var(--color-brand);
   text-decoration: none;
   transition: color 250ms 50ms var(--transition-ease-cubic), transform 250ms var(--transition-ease-cubic);
+  filter: saturate(0)
+}
+.nav__brand--active,
+.nav__brand:hover {
+  filter: saturate(1);
 }
 .nav__brand:hover {
-  color: var(--color-text-secondary);
   transform: translateY(-4px) scale(104%);
 }
 .nav__brand img {

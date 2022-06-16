@@ -34,7 +34,7 @@ export default function Footer() {
   const copyrightText = `WorkSponsor © ${new Date().getFullYear()}`;
   const renderedLinks = footerLinks.map(({ name, href }) => {
     return (
-      <Link key={href} to={href} className="footer__link">
+      <Link key={href} to={href} className="footer__link" prefetch="intent">
         {name}
       </Link>
     );

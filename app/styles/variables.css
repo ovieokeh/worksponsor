@@ -51,6 +51,7 @@ html, body {
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
   font-size: clamp(100%, 1rem + 2vw, 24px);
+  overflow-x: hidden;
 }
 
 h1 {
