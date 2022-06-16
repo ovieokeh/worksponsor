@@ -2,6 +2,12 @@ import type { Company as CompanyType } from "@prisma/client";
 import { Link } from "@remix-run/react";
 import { RiBuilding4Line } from "react-icons/ri";
 
+import styles from "./company.css";
+
+export const links = () => {
+  return [{ rel: "stylesheet", href: styles }];
+};
+
 const trim = (text: string) => {
   return `${text.slice(0, 150)}...`;
 };

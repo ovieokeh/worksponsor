@@ -1,6 +1,12 @@
 import Container from "../container";
 import Button from "../button";
 
+import styles from "./filter.css";
+
+export const links = () => {
+  return [{ rel: "stylesheet", href: styles }];
+};
+
 export default function Filter() {
   const title = "Companies sponsoring visas";
   const description =

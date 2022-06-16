@@ -9,18 +9,13 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
-import Layout from "./components/layout";
-import Navigation from "./components/navigation";
-import Footer from "./components/footer";
-import Construction from "./components/construction";
+import Layout, { links as layoutLinks } from "./components/layout";
+import Navigation, { links as navLinks } from "./components/navigation";
+import Footer, { links as footerLinks } from "./components/footer";
+import Construction, {
+  links as constructionLinks,
+} from "./components/construction";
 
-import buttonStyles from "./components/button/button.css";
-import navigationStyles from "./components/navigation/navigation.css";
-import containerStyles from "./components/container/container.css";
-import footerStyles from "./components/footer/footer.css";
-import layoutStyles from "./components/layout/layout.css";
-import constructionStyles from "./components/construction/construction.css";
-import filterStyles from "./components/filter/filter.css";
 import styleVariables from "./styles/variables.css";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
@@ -52,13 +47,10 @@ export const links: LinksFunction = () => {
       href: "https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Open+Sans:wght@300;400&display=swap",
     },
     { rel: "stylesheet", href: styleVariables },
-    { rel: "stylesheet", href: layoutStyles },
-    { rel: "stylesheet", href: buttonStyles },
-    { rel: "stylesheet", href: navigationStyles },
-    { rel: "stylesheet", href: containerStyles },
-    { rel: "stylesheet", href: filterStyles },
-    { rel: "stylesheet", href: footerStyles },
-    { rel: "stylesheet", href: constructionStyles },
+    ...navLinks(),
+    ...layoutLinks(),
+    ...footerLinks(),
+    ...constructionLinks(),
   ];
 };
 

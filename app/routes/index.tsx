@@ -2,19 +2,18 @@ import type { ActionFunction, LoaderFunction } from "@remix-run/server-runtime";
 import type { Company } from "@prisma/client";
 import { json } from "@remix-run/server-runtime";
 
-import Button from "~/components/button";
-import Waitlist from "~/components/waitlist";
-import Container from "~/components/container";
+import Button, { links as buttonLinks } from "~/components/button";
+import Waitlist, { links as waitlistLinks } from "~/components/waitlist";
+import Container, { links as containerLinks } from "~/components/container";
 import Animate from "~/components/animate";
 
 import { getCompanies } from "~/model/company.server";
 import { addWaitlist } from "~/model/waitlist.server";
 
 import homepageStyles from "~/styles/pages/homepage.css";
-import waitlistStyles from "~/components/waitlist/waitlist.css";
 import sleep from "utils/sleep";
 
-const EMAIL_VALIDATION_REGEX = /^\w+([.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+const EMAIL_VALIDATION_REGEX = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
 type LoaderData = {
   companies: Company[];
@@ -96,7 +95,9 @@ export const action: ActionFunction = async ({ request }) => {
 
 export function links() {
   return [
-    { rel: "stylesheet", href: waitlistStyles },
+    ...buttonLinks(),
+    ...containerLinks(),
+    ...waitlistLinks(),
     { rel: "stylesheet", href: homepageStyles },
   ];
 }

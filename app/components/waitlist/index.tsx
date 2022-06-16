@@ -4,6 +4,12 @@ import { useFetcher } from "@remix-run/react";
 import Button from "../button";
 import Animate from "../animate";
 
+import styles from "./waitlist.css";
+
+export const links = () => {
+  return [{ rel: "stylesheet", href: styles }];
+};
+
 const render = (condition: boolean, component: any) => {
   if (condition) return component;
   return null;

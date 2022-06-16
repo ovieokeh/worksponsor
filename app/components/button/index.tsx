@@ -1,5 +1,12 @@
+import type { LinksFunction } from "@remix-run/server-runtime";
 import { Link } from "@remix-run/react";
 import { Rings } from "react-loader-spinner";
+
+import styles from "./button.css";
+
+export const links = () => {
+  return [{ rel: "stylesheet", href: styles }];
+};
 
 type ButtonProps = {
   as?: "link" | "button";

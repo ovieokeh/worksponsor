@@ -1,5 +1,15 @@
-import Button from "../button";
-import Container from "../container";
+import Button, { links as buttonLinks } from "../button";
+import Container, { links as containerLinks } from "../container";
+
+import styles from "./construction.css";
+
+export const links = () => {
+  return [
+    ...buttonLinks(),
+    ...containerLinks(),
+    { rel: "stylesheet", href: styles },
+  ];
+};
 
 export default function Construction() {
   const titleText = "Hi there";

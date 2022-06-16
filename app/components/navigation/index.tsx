@@ -6,6 +6,12 @@ import MenuIcon from "./MenuIcon";
 import { useIsDesktop, useIsomorphicLayoutEffect } from "hooks";
 import throttle from "utils/throttle";
 
+import styles from "./navigation.css";
+
+export const links = () => {
+  return [{ rel: "stylesheet", href: styles }];
+};
+
 const navLinks = [
   { name: "Browse companies", href: "/companies" },
   { name: "View jobs", href: "/jobs" },
