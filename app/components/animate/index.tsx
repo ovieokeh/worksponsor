@@ -35,8 +35,6 @@ const Animate: FunctionComponent<{
     },
   };
 
-  console.log({ ref, inView });
-
   return (
     <motion.div
       initial="hidden"

@@ -36,6 +36,8 @@ export default function Navigation() {
   }, [scrollDirection]);
 
   function handleScroll() {
+    if (isMenuToggled) return;
+
     const MINIMUM_SCROLL_LENGTH = 10;
     const currentScrollTop = window.scrollY;
 
@@ -63,7 +65,7 @@ export default function Navigation() {
     return () => {
       window.removeEventListener("scroll", handleScrollThrottled);
     };
-  }, []);
+  }, [isMenuToggled]);
 
   function handleMenuToggle() {
     if (isDesktop) return;
@@ -71,8 +73,8 @@ export default function Navigation() {
     setIsMenuToggled((prevToggleState) => {
       const newToggleState = !prevToggleState;
       newToggleState
-        ? document.body.classList.add("no-scroll")
-        : document.body.classList.remove("no-scroll");
+        ? document.documentElement.classList.add("no-scroll")
+        : document.documentElement.classList.remove("no-scroll");
 
       return newToggleState;
     });

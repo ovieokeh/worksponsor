@@ -41,12 +41,14 @@ html {
   --z-index-nav: 3;
   --z-index-nav-menu: 4;
 
+  ---nav-height: 84px;
   --site-width: 1280px;
+
+  height: 100%;
 }
 
 html, body {
   color: var(--color-black);
-  height: 100%;
   margin: 0;
   padding: 0;
   box-sizing: border-box;

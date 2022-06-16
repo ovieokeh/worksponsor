@@ -5,6 +5,7 @@
   top: 0;
   left: 0;
   right: 0;
+  max-height: var(---nav-height);
   transition: transform 300ms var(--transition-ease-cubic), box-shadow 250ms 50ms var(--transition-ease-cubic);
   z-index: var(--z-index-nav);
 }
@@ -45,7 +46,7 @@
   position: fixed;
   right: 0;
   bottom: 0;
-  left: 84px;
+  left: 0;
   top: 0;
   transform: translateX(100%);
   transition: transform 300ms var(--transition-ease-cubic);
