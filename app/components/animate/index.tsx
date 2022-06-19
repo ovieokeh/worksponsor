@@ -14,6 +14,7 @@ const Animate: FunctionComponent<{
   };
   threshold?: number;
   className?: string;
+  onMount?: boolean;
   children: ReactNode;
 }> = ({
   className = "",
@@ -23,14 +24,15 @@ const Animate: FunctionComponent<{
   delay = 0,
   end = { x: 0, y: 0, opacity: 1 },
   threshold = 0.3,
+  onMount = false,
 }) => {
   const controls = useAnimation();
   const { ref, inView } = useInView({ threshold });
   const { x = 0, y = 0, opacity = 1 } = end;
 
   useEffect(() => {
-    if (inView) controls.start("show");
-  }, [controls, inView]);
+    if (inView || onMount) controls.start("show");
+  }, [controls, inView, onMount]);
 
   const variantMapping = {
     ltr: {

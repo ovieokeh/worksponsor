@@ -52,9 +52,15 @@
   margin-top: var(--space-20);
 }
 
-.home__hero-image {
+.home__hero-image--gradient {
   background: rgb(30,43,55);
   background: linear-gradient(0deg, rgba(30,43,55,1) 0%, rgba(184,96,114,1) 35%, rgba(224,199,191,1) 100%);
+  max-width: 100%;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.home__hero-image {
   max-width: 100%;
   vertical-align: middle;
   display: inline-block;
@@ -87,9 +93,12 @@
   .home__hero-image-container {
     align-self: flex-end;
   }
-  .home__hero-image {
-    background: none;
+  .home__hero-image,
+  .home__hero-image--gradient {
     transform: scaleX(-1);
+  }
+  .home__hero-image--gradient {
+    background: none;
   }
 
   .home__features-content {

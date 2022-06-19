@@ -19,6 +19,7 @@ import sleep from "utils/sleep";
 import { useIsDesktop } from "hooks";
 
 import homepageStyles from "~/styles/pages/homepage.css";
+import Image from "~/shared/image";
 
 const EMAIL_VALIDATION_REGEX = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
@@ -69,6 +70,8 @@ const IntroHero = ({ isDesktop }: { isDesktop: boolean }) => {
   or create a personalised profile to help you land your preferred role.`;
   const heroProfileCTA = "Coming soon";
 
+  console.log("heosl", { m: "3w" });
+
   const content = isDesktop ? (
     <Container className="home__hero-content">
       <Animate>
@@ -81,20 +84,20 @@ const IntroHero = ({ isDesktop }: { isDesktop: boolean }) => {
           </div>
         </div>
       </Animate>
-      <Animate className="home__hero-image-container">
-        <img
-          className="home__hero-image"
-          src="/images/tulips.png"
+      <Animate className="home__hero-image-container" onMount>
+        <Image
+          className="home__hero-image--gradient"
+          name="tulips"
           alt="An abstract illustration"
         />
       </Animate>
     </Container>
   ) : (
     <>
-      <Animate className="home__hero-image-container" duration={0.8}>
-        <img
-          className="home__hero-image"
-          src="/images/tulips.png"
+      <Animate className="home__hero-image-container" duration={0.8} onMount>
+        <Image
+          className="home__hero-image--gradient"
+          name="tulips"
           alt="An abstract illustration"
         />
       </Animate>
@@ -145,9 +148,9 @@ const FeaturesForUsers = () => {
       <Container className="home__features-content">
         <Animate animation="rtl">
           <div className="home__hero-image-container">
-            <img
+            <Image
               className="home__hero-image"
-              src="/images/job-seekers.png"
+              name="job-seekers"
               alt="An abstract illustration"
             />
           </div>
@@ -231,9 +234,9 @@ const FeaturesForCompanies = () => {
 
         <Animate animation="rtl">
           <div className="home__hero-image-container">
-            <img
+            <Image
               className="home__hero-image"
-              src="/images/for-companies.png"
+              name="for-companies"
               alt="An abstract illustration"
             />
           </div>
