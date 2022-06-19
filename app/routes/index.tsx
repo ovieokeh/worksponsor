@@ -4,7 +4,9 @@ import { json } from "@remix-run/server-runtime";
 import { RiFolderSettingsLine } from "react-icons/ri";
 import { BiCollection } from "react-icons/bi";
 import { ImBooks } from "react-icons/im";
-import { AiOutlineBarChart } from "react-icons/ai";
+import { AiOutlineBarChart, AiOutlineUpload } from "react-icons/ai";
+import { IoMdPeople } from "react-icons/io";
+import { CgTrack } from "react-icons/cg";
 
 import Button from "~/shared/button";
 import Waitlist, { links as waitlistLinks } from "~/components/waitlist";
@@ -64,8 +66,7 @@ const IntroHero = () => {
   const heroDescription = `
   Explore verified visa sponsors, browse through available jobs,
   or create a personalised profile to help you land your preferred role.`;
-  const heroJobsCTA = "Browse jobs";
-  const heroProfileCTA = "Create personalised profile";
+  const heroProfileCTA = "Coming soon";
 
   return (
     <section className="home__hero">
@@ -78,11 +79,10 @@ const IntroHero = () => {
             <div className="home__hero-ctas">
               <Button
                 as="link"
-                href="/jobs"
-                text={heroJobsCTA}
-                variant="secondary"
+                href="/profile"
+                text={heroProfileCTA}
+                disabled
               />
-              <Button as="link" href="/profile" text={heroProfileCTA} />
             </div>
           </div>
         </Animate>
@@ -136,9 +136,7 @@ const FeaturesForUsers = () => {
 
         <Animate animation="ltr">
           <div className="home__features-text">
-            <h3 className="home__features-heading">
-              Why job seekers choose us
-            </h3>
+            <h3 className="home__features-heading">For job seekers</h3>
             <ul className="home__features-list">
               {features.map(({ icon: Icon, text }) => {
                 return (
@@ -156,7 +154,68 @@ const FeaturesForUsers = () => {
               as="link"
               href="/signup"
               className="home__features-btn"
-              text="Create an account"
+              text="Coming soon"
+              disabled
+            />
+          </div>
+        </Animate>
+      </Container>
+    </section>
+  );
+};
+
+const FeaturesForCompanies = () => {
+  const features = [
+    {
+      icon: IoMdPeople,
+      text: "Tons of responsive and work-ready candidates with all the information you need to vet them",
+    },
+    {
+      icon: CgTrack,
+      text: "Free applicant tracking system or free integration with any existing ATS you may already use",
+    },
+    {
+      icon: AiOutlineUpload,
+      text: "Outsource the vetting to us and let us spend hundreds of hours finding the right candidate for you",
+    },
+  ];
+
+  return (
+    <section className="home__features">
+      <Container className="home__features-content reverse">
+        <Animate animation="ltr">
+          <div className="home__features-text">
+            <h3 className="home__features-heading">For companies</h3>
+            <ul className="home__features-list">
+              {features.map(({ icon: Icon, text }) => {
+                return (
+                  <li key={text} className="home__feature">
+                    <span className="home__feature-icon">
+                      <Icon />
+                    </span>
+                    <span className="home__feature-text">{text}</span>
+                  </li>
+                );
+              })}
+            </ul>
+
+            <Button
+              as="link"
+              href="/company-signup"
+              variant="secondary"
+              className="home__features-btn"
+              text="Coming soon"
+              disabled
+            />
+          </div>
+        </Animate>
+
+        <Animate animation="rtl">
+          <div className="home__hero-image-container">
+            <img
+              className="home__hero-image"
+              src="https://assets.website-files.com/61f063412698c3c0331848b0/61f995f51f7aed6923418ff7_Frame%20283-min.png"
+              alt="An abstract illustration"
             />
           </div>
         </Animate>
@@ -175,6 +234,9 @@ export default function Index() {
       <Animate>
         <hr />
       </Animate>
+
+      <FeaturesForCompanies />
+      <Waitlist />
     </main>
   );
 }

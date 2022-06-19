@@ -5,7 +5,7 @@ export default function AnimatedOutlet({ outlet }: any) {
   const location = useLocation();
 
   return (
-    <AnimatePresence initial>
+    <AnimatePresence exitBeforeEnter initial>
       <motion.main
         key={location.key}
         initial={{ x: "15%", opacity: 0 }}

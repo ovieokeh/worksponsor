@@ -7,10 +7,17 @@ const Animate: FunctionComponent<{
   animation?: "ltr" | "rtl" | "ttb" | "btt" | "fade-in";
   duration?: number;
   delay?: number;
+  threshold?: number;
   children: ReactNode;
-}> = ({ animation = "fade-in", children, duration = 0.5, delay = 0 }) => {
+}> = ({
+  animation = "fade-in",
+  children,
+  duration = 0.5,
+  delay = 0,
+  threshold = 0.3,
+}) => {
   const controls = useAnimation();
-  const { ref, inView } = useInView({ threshold: 0.5 });
+  const { ref, inView } = useInView({ threshold });
 
   useEffect(() => {
     if (inView) controls.start("show");
