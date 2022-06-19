@@ -70,8 +70,6 @@ const IntroHero = ({ isDesktop }: { isDesktop: boolean }) => {
   or create a personalised profile to help you land your preferred role.`;
   const heroProfileCTA = "Coming soon";
 
-  console.log("heosl", { m: "3w" });
-
   const content = isDesktop ? (
     <Container className="home__hero-content">
       <Animate>

@@ -70,13 +70,17 @@ export default function Navigation() {
   function handleMenuToggle() {
     if (isDesktop) return;
 
-    setIsMenuToggled((prevToggleState) => {
-      const newToggleState = !prevToggleState;
-      newToggleState
-        ? document.documentElement.classList.add("no-scroll")
-        : document.documentElement.classList.remove("no-scroll");
+    setScrollDirection(() => {
+      setIsMenuToggled((prevToggleState) => {
+        const newToggleState = !prevToggleState;
+        newToggleState
+          ? document.documentElement.classList.add("no-scroll")
+          : document.documentElement.classList.remove("no-scroll");
 
-      return newToggleState;
+        return newToggleState;
+      });
+
+      return "up";
     });
   }
 

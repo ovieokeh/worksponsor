@@ -54,6 +54,7 @@
 }
 .nav__links--toggled {
   transform: translateX(0);
+  height: 100%;
 }
 
 .nav__link {
@@ -136,7 +137,7 @@
 }
 
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 768px) {
   .nav__links {
     position: relative;
     left: auto;
