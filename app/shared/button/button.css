@@ -13,9 +13,7 @@
   transition: color 200ms var(--transition-ease-cubic), background 200ms var(--transition-ease-cubic);
   width: fit-content;
 }
-
-.button:hover,
-.button--primary:hover {
+.button:hover {
   border-color: var(--color-grey-90);
   background: var(--color-text-secondary);
   color: var(--color-white);
@@ -23,5 +21,10 @@
 
 .button--primary {
   background: var(--color-text-secondary);
+  color: var(--color-white);
+}
+.button--primary:hover {
+  border-color: var(--color-text-primary);
+  background: var(--color-text-primary);
   color: var(--color-white);
 }

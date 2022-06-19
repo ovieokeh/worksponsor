@@ -48,7 +48,7 @@ html {
 }
 
 html, body {
-  color: var(--color-black);
+  color: var(--color-text-primary);
   margin: 0;
   padding: 0;
   box-sizing: border-box;

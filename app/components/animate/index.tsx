@@ -4,13 +4,13 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 const Animate: FunctionComponent<{
-  animation: "ltr" | "rtl" | "ttb" | "btt";
+  animation?: "ltr" | "rtl" | "ttb" | "btt" | "fade-in";
   duration?: number;
   delay?: number;
   children: ReactNode;
-}> = ({ animation, children, duration = 0.5, delay = 0 }) => {
+}> = ({ animation = "fade-in", children, duration = 0.5, delay = 0 }) => {
   const controls = useAnimation();
-  const { ref, inView } = useInView();
+  const { ref, inView } = useInView({ threshold: 0.5 });
 
   useEffect(() => {
     if (inView) controls.start("show");
@@ -32,6 +32,10 @@ const Animate: FunctionComponent<{
     btt: {
       hidden: { y: 100, opacity: 0 },
       show: { y: 0, opacity: 1 },
+    },
+    "fade-in": {
+      hidden: { opacity: 0 },
+      show: { opacity: 1 },
     },
   };
 

@@ -1,7 +1,7 @@
 .container {
   max-width: var(--site-width);
   margin: auto;
-  padding: calc(var(--space-32) * 2) var(--space-16);
+  padding: calc(var(--space-32) * 2) var(--space-24);
 }
 
 @media screen and (min-width: 768px) {
