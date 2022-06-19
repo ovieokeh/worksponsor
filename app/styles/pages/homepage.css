@@ -12,6 +12,11 @@
 .home__hero-content {
   display: flex;
   flex-direction: column-reverse;
+  position: relative;
+  margin-bottom: -108px;
+  background: var(--color-white);
+  width: 80%;
+  border-radius: 8px;
 }
 
 .home__features-content {
@@ -48,6 +53,8 @@
 }
 
 .home__hero-image {
+  background: rgb(30,43,55);
+  background: linear-gradient(0deg, rgba(30,43,55,1) 0%, rgba(184,96,114,1) 35%, rgba(224,199,191,1) 100%);
   max-width: 100%;
   vertical-align: middle;
   display: inline-block;
@@ -62,10 +69,13 @@
 
 @media screen and (min-width: 768px) {
   .home__hero-content {
+    background: none;
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-top: calc(var(--space-40) * 2);
     margin-bottom: calc(var(--space-40) * 3);
+    transform: none;
+    width: unset;
   }
   .home__hero-content > div {
     display: flex;
@@ -78,6 +88,7 @@
     align-self: flex-end;
   }
   .home__hero-image {
+    background: none;
     transform: scaleX(-1);
   }
 

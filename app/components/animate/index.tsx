@@ -7,6 +7,11 @@ const Animate: FunctionComponent<{
   animation?: "ltr" | "rtl" | "ttb" | "btt" | "fade-in";
   duration?: number;
   delay?: number;
+  end?: {
+    x?: number;
+    y?: number;
+    opacity?: number;
+  };
   threshold?: number;
   className?: string;
   children: ReactNode;
@@ -16,10 +21,12 @@ const Animate: FunctionComponent<{
   children,
   duration = 0.5,
   delay = 0,
+  end = { x: 0, y: 0, opacity: 1 },
   threshold = 0.3,
 }) => {
   const controls = useAnimation();
   const { ref, inView } = useInView({ threshold });
+  const { x = 0, y = 0, opacity = 1 } = end;
 
   useEffect(() => {
     if (inView) controls.start("show");
@@ -28,23 +35,23 @@ const Animate: FunctionComponent<{
   const variantMapping = {
     ltr: {
       hidden: { x: -100, opacity: 0 },
-      show: { x: 0, opacity: 1 },
+      show: { x, opacity },
     },
     rtl: {
       hidden: { x: 100, opacity: 0 },
-      show: { x: 0, opacity: 1 },
+      show: { x, opacity },
     },
     ttb: {
       hidden: { y: -100, opacity: 0 },
-      show: { y: 0, opacity: 1 },
+      show: { y, opacity },
     },
     btt: {
-      hidden: { y: 100, opacity: 0 },
-      show: { y: 0, opacity: 1 },
+      hidden: { y: 0, opacity: 0 },
+      show: { y, opacity },
     },
     "fade-in": {
       hidden: { opacity: 0 },
-      show: { opacity: 1 },
+      show: { opacity },
     },
   };
 

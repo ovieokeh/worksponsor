@@ -15,9 +15,10 @@ import Animate from "~/components/animate";
 
 import { getCompanies } from "~/model/company.server";
 import { addWaitlist } from "~/model/waitlist.server";
+import sleep from "utils/sleep";
+import { useIsDesktop } from "hooks";
 
 import homepageStyles from "~/styles/pages/homepage.css";
-import sleep from "utils/sleep";
 
 const EMAIL_VALIDATION_REGEX = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
@@ -61,42 +62,62 @@ export function links() {
   return [...waitlistLinks(), { rel: "stylesheet", href: homepageStyles }];
 }
 
-const IntroHero = () => {
+const IntroHero = ({ isDesktop }: { isDesktop: boolean }) => {
   const heroHeading = `Sponsored jobs in the Netherlands you won't find anywhere else`;
   const heroDescription = `
   Explore verified visa sponsors, browse through available jobs,
   or create a personalised profile to help you land your preferred role.`;
   const heroProfileCTA = "Coming soon";
 
-  return (
-    <section className="home__hero">
-      <Container className="home__hero-content">
-        <Animate>
-          <div className="home__hero-text">
-            <h2 className="home__hero-heading">{heroHeading}</h2>
-            <p className="home__hero-description">{heroDescription}</p>
+  const content = isDesktop ? (
+    <Container className="home__hero-content">
+      <Animate>
+        <div className="home__hero-text">
+          <h2 className="home__hero-heading">{heroHeading}</h2>
+          <p className="home__hero-description">{heroDescription}</p>
 
-            <div className="home__hero-ctas">
-              <Button
-                as="link"
-                href="/profile"
-                text={heroProfileCTA}
-                disabled
-              />
-            </div>
+          <div className="home__hero-ctas">
+            <Button as="link" href="/profile" text={heroProfileCTA} disabled />
           </div>
-        </Animate>
+        </div>
+      </Animate>
+      <Animate className="home__hero-image-container">
+        <img
+          className="home__hero-image"
+          src="/images/tulips.png"
+          alt="An abstract illustration"
+        />
+      </Animate>
+    </Container>
+  ) : (
+    <>
+      <Animate className="home__hero-image-container" duration={0.8}>
+        <img
+          className="home__hero-image"
+          src="/images/tulips.png"
+          alt="An abstract illustration"
+        />
+      </Animate>
 
-        <Animate className="home__hero-image-container">
-          <img
-            className="home__hero-image"
-            src="/images/tulips.png"
-            alt="An abstract illustration"
-          />
-        </Animate>
-      </Container>
-    </section>
+      <Animate
+        animation="btt"
+        className="container home__hero-content"
+        duration={0.5}
+        end={{ y: -148 }}
+      >
+        <div className="home__hero-text">
+          <h2 className="home__hero-heading">{heroHeading}</h2>
+          <p className="home__hero-description">{heroDescription}</p>
+
+          <div className="home__hero-ctas">
+            <Button as="link" href="/profile" text={heroProfileCTA} disabled />
+          </div>
+        </div>
+      </Animate>
+    </>
   );
+
+  return <section className="home__hero">{content}</section>;
 };
 
 const FeaturesForUsers = () => {
@@ -107,7 +128,7 @@ const FeaturesForUsers = () => {
     },
     {
       icon: AiOutlineBarChart,
-      text: "View salary ranges to find out what you're worth explore the current top skills and technologies",
+      text: "View salary ranges to find out what you're worth and explore the current top skills and technologies",
     },
     {
       icon: RiFolderSettingsLine,
@@ -126,7 +147,7 @@ const FeaturesForUsers = () => {
           <div className="home__hero-image-container">
             <img
               className="home__hero-image"
-              src="https://assets.website-files.com/61f063412698c3c0331848b0/61f995f51f7aed6923418ff7_Frame%20283-min.png"
+              src="/images/job-seekers.png"
               alt="An abstract illustration"
             />
           </div>
@@ -212,7 +233,7 @@ const FeaturesForCompanies = () => {
           <div className="home__hero-image-container">
             <img
               className="home__hero-image"
-              src="https://assets.website-files.com/61f063412698c3c0331848b0/61f995e914cc4b46df4e1ef6_Frame%20284-min.png"
+              src="/images/for-companies.png"
               alt="An abstract illustration"
             />
           </div>
@@ -223,9 +244,11 @@ const FeaturesForCompanies = () => {
 };
 
 export default function Index() {
+  const isDesktop = useIsDesktop();
+
   return (
     <main className="homepage">
-      <IntroHero />
+      <IntroHero isDesktop={isDesktop} />
       <Waitlist />
       <FeaturesForUsers />
 

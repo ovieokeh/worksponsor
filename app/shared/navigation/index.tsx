@@ -59,7 +59,7 @@ export default function Navigation() {
   }
 
   useIsomorphicLayoutEffect(() => {
-    const handleScrollThrottled = throttle(handleScroll, 300);
+    const handleScrollThrottled = throttle(handleScroll, 500);
     window.addEventListener("scroll", handleScrollThrottled);
 
     return () => {

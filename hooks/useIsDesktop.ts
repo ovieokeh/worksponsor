@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
-
-import debounce from "../utils/debounce";
+import { useState } from "react";
+import { useIsomorphicLayoutEffect } from "framer-motion";
 
 const DESKTOP_BREAK_POINT = "(min-width: 767px)";
 
@@ -21,16 +20,18 @@ const DESKTOP_BREAK_POINT = "(min-width: 767px)";
 export function useIsDesktop() {
   const [isDesktop, setIsDesktop] = useState(false);
 
-  useEffect(() => {
+  const onWindowResize = () => {
+    setIsDesktop(window.matchMedia(DESKTOP_BREAK_POINT).matches);
+  };
+
+  useIsomorphicLayoutEffect(() => {
     setIsDesktop(window.matchMedia(DESKTOP_BREAK_POINT).matches);
 
-    const onWindowResize = debounce(
-      () => setIsDesktop(window.matchMedia(DESKTOP_BREAK_POINT).matches),
-      300
-    );
     window.addEventListener("resize", onWindowResize);
 
-    return () => window.removeEventListener("resize", onWindowResize);
+    return () => {
+      window.removeEventListener("resize", onWindowResize);
+    };
   }, []);
 
   return isDesktop;
