@@ -2,9 +2,9 @@ import type { ActionFunction, LoaderFunction } from "@remix-run/server-runtime";
 import type { Company } from "@prisma/client";
 import { json } from "@remix-run/server-runtime";
 
-import Button, { links as buttonLinks } from "~/components/button";
+import Button from "~/shared/button";
 import Waitlist, { links as waitlistLinks } from "~/components/waitlist";
-import Container, { links as containerLinks } from "~/components/container";
+import Container from "~/shared/container";
 import Animate from "~/components/animate";
 
 import { getCompanies } from "~/model/company.server";
@@ -94,12 +94,7 @@ export const action: ActionFunction = async ({ request }) => {
 };
 
 export function links() {
-  return [
-    ...buttonLinks(),
-    ...containerLinks(),
-    ...waitlistLinks(),
-    { rel: "stylesheet", href: homepageStyles },
-  ];
+  return [...waitlistLinks(), { rel: "stylesheet", href: homepageStyles }];
 }
 export default function Index() {
   return (

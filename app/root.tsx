@@ -4,41 +4,23 @@ import {
   Links,
   LiveReload,
   Meta,
-  Outlet,
   Scripts,
   ScrollRestoration,
+  useOutlet,
 } from "@remix-run/react";
 
-import Layout, { links as layoutLinks } from "./components/layout";
-import Navigation, { links as navLinks } from "./components/navigation";
-import Footer, { links as footerLinks } from "./components/footer";
+import AnimatedOutlet from "./components/animated-outlet";
+import Navigation, { links as navLinks } from "./shared/navigation";
+import Layout, { links as layoutLinks } from "./shared/layout";
+import { links as containerLinks } from "./shared/container";
+import Footer, { links as footerLinks } from "./shared/footer";
+import { links as buttonLinks } from "./shared/button";
 import Construction, {
   links as constructionLinks,
 } from "./components/construction";
 
 import styleVariables from "./styles/variables.css";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-
-export const CatchBoundary: CatchBoundaryComponent = () => {
-  return (
-    <html>
-      <head>
-        <title>Oh no!</title>
-        <Meta />
-        <Links />
-      </head>
-      <body>
-        <Navigation />
-        <Layout>
-          <Construction />
-        </Layout>
-        <Footer />
-        <ScrollRestoration />
-        <Scripts />
-      </body>
-    </html>
-  );
-};
 
 export const links: LinksFunction = () => {
   return [
@@ -49,7 +31,9 @@ export const links: LinksFunction = () => {
     { rel: "stylesheet", href: styleVariables },
     ...navLinks(),
     ...layoutLinks(),
+    ...containerLinks(),
     ...footerLinks(),
+    ...buttonLinks(),
     ...constructionLinks(),
   ];
 };
@@ -61,18 +45,22 @@ export const meta: MetaFunction = () => ({
 });
 
 export default function App() {
+  const outlet = useOutlet();
+
   return (
     <html lang="en">
       <head>
         <Meta />
         <Links />
       </head>
+
       <body>
         <Navigation />
         <Layout>
-          <Outlet />
+          <AnimatedOutlet outlet={outlet} />
         </Layout>
         <Footer />
+
         <ScrollRestoration />
 
         <script
@@ -95,3 +83,25 @@ export default function App() {
     </html>
   );
 }
+
+export const CatchBoundary: CatchBoundaryComponent = () => {
+  return (
+    <html lang="en">
+      <head>
+        <title>Oh no!</title>
+        <Meta />
+        <Links />
+      </head>
+
+      <body>
+        <Navigation />
+        <Layout>
+          <AnimatedOutlet outlet={<Construction />} />
+        </Layout>
+        <Footer />
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+};

@@ -1,4 +1,3 @@
-import type { LinksFunction } from "@remix-run/server-runtime";
 import { Link } from "@remix-run/react";
 import { Rings } from "react-loader-spinner";
 

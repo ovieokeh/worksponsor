@@ -24,10 +24,12 @@ export function links() {
   return [{ rel: "stylesheet", href: companyStyles }];
 }
 export default function Company() {
-  const { company } = useLoaderData() as LoaderData;
+  const loaderData = useLoaderData() as LoaderData;
+  if (!loaderData || loaderData.company) return null;
+
   const {
     details: { name, description },
-  } = company;
+  } = loaderData.company;
 
   return (
     <main className="companies">

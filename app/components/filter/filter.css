@@ -2,6 +2,10 @@
   background: var(--color-grey);
 }
 
+.filter__title {
+  margin-top: 0;
+}
+
 @media screen and (min-width: 768px) {
   .filter__description {
     max-width: 80%;

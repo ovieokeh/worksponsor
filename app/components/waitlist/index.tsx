@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useFetcher } from "@remix-run/react";
 
-import Button from "../button";
+import Button from "../../shared/button";
 import Animate from "../animate";
 
 import styles from "./waitlist.css";

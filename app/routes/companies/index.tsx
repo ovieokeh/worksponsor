@@ -7,9 +7,9 @@ import { useLoaderData } from "@remix-run/react";
 import { getCompanies } from "~/model/company.server";
 import { useGatedContent } from "hooks/useGatedContent";
 
+import Container from "~/shared/container";
+import Filter, { links as filterLinks } from "~/components/filter";
 import Company, { links as companyLinks } from "~/components/company";
-import Container, { links as containerLinks } from "~/components/container";
-import Filter from "~/components/filter";
 import Pagination from "~/components/pagination";
 
 import companiesStyles from "~/styles/pages/companies.css";
@@ -28,16 +28,16 @@ export const loader: LoaderFunction = async ({ request, params }) => {
 
 export function links() {
   return [
-    ...containerLinks(),
+    ...filterLinks(),
     ...companyLinks(),
     { rel: "stylesheet", href: companiesStyles },
   ];
 }
 
 export default function Companies() {
-  const { companies } = useLoaderData() as LoaderData;
+  const loaderData = useLoaderData() as LoaderData;
 
-  const renderedCompanies = companies.map((company) => {
+  const renderedCompanies = loaderData?.companies.map((company) => {
     return <Company key={company.id} {...company} />;
   });
 

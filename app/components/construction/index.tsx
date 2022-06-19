@@ -1,14 +1,10 @@
-import Button, { links as buttonLinks } from "../button";
-import Container, { links as containerLinks } from "../container";
+import Container from "../../shared/container";
+import Button from "../../shared/button";
 
 import styles from "./construction.css";
 
 export const links = () => {
-  return [
-    ...buttonLinks(),
-    ...containerLinks(),
-    { rel: "stylesheet", href: styles },
-  ];
+  return [{ rel: "stylesheet", href: styles }];
 };
 
 export default function Construction() {
