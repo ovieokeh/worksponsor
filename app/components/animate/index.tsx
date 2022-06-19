@@ -8,8 +8,10 @@ const Animate: FunctionComponent<{
   duration?: number;
   delay?: number;
   threshold?: number;
+  className?: string;
   children: ReactNode;
 }> = ({
+  className = "",
   animation = "fade-in",
   children,
   duration = 0.5,
@@ -52,6 +54,7 @@ const Animate: FunctionComponent<{
       animate={controls}
       variants={variantMapping[animation]}
       transition={{ duration, delay }}
+      className={className}
     >
       {cloneElement(children as React.ReactElement<any>, {
         ref,

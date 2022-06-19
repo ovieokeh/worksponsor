@@ -70,7 +70,6 @@ export default function Waitlist() {
             <Button
               className="waitlist__submit"
               type="submit"
-              variant="secondary"
               text={submitText}
               disabled={isLoading}
               isLoading={isLoading}

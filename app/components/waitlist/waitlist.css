@@ -5,26 +5,27 @@
 .waitlist__description {
   font-size: 14px;
   padding: 0;
-  margin-bottom: var(--space-12);
-  opacity: 0.7;
+  margin-bottom: var(--space-16);
 }
 
 .waitlist__form-inputs {
   border-style: none;
   display: flex;
-  flex-direction: column;
-  gap: var(--space-12);
   padding: 0;
 }
 .waitlist__input {
   border-style: none;
-  border: 1px solid var(--color-grey-90);
+  border: 1px solid var(--color-brand);
+  border-top-left-radius: var(--border-radius-4);
+  border-bottom-left-radius: var(--border-radius-4);
   font-size: 14px;
   padding: var(--space-16);
   flex-grow: 1;
 }
 .waitlist__submit {
   width: fit-content;
+  border-top-right-radius: var(--border-radius-4);
+  border-bottom-right-radius: var(--border-radius-4);
 }
 
 .waitlist__error {
@@ -58,10 +59,6 @@
   
   .waitlist__description {
     padding: 0 var(--space-24);
-  }
-
-  .waitlist__form-inputs {
-    flex-direction: row;
   }
 
   .waitlist__input {

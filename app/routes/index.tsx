@@ -87,14 +87,12 @@ const IntroHero = () => {
           </div>
         </Animate>
 
-        <Animate>
-          <div className="home__hero-image-container">
-            <img
-              className="home__hero-image"
-              src="https://assets.website-files.com/61f063412698c3c0331848b0/61fad20cfca2df71245ce891_1.png"
-              alt="An abstract illustration"
-            />
-          </div>
+        <Animate className="home__hero-image-container">
+          <img
+            className="home__hero-image"
+            src="/images/tulips.png"
+            alt="An abstract illustration"
+          />
         </Animate>
       </Container>
     </section>
@@ -214,7 +212,7 @@ const FeaturesForCompanies = () => {
           <div className="home__hero-image-container">
             <img
               className="home__hero-image"
-              src="https://assets.website-files.com/61f063412698c3c0331848b0/61f995f51f7aed6923418ff7_Frame%20283-min.png"
+              src="https://assets.website-files.com/61f063412698c3c0331848b0/61f995e914cc4b46df4e1ef6_Frame%20284-min.png"
               alt="An abstract illustration"
             />
           </div>
