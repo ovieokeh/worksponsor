@@ -35,7 +35,10 @@
     "react-icons": "^4.4.0",
     "react-intersection-observer": "^9.3.3",
     "react-loader-spinner": "^5.1.5",
+    "react-remark": "^2.1.0",
     "react-transition-group": "^4.4.2",
+    "rehype-raw": "^6.1.1",
+    "rehype-sanitize": "^5.0.1",
     "sharp": "^0.30.6",
     "sib-api-v3-sdk": "^8.3.0",
     "tiny-invariant": "^1.2.0"
