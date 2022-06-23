@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "@remix-run/react";
 
 import MenuIcon from "./MenuIcon";
@@ -13,6 +13,7 @@ export const links = () => {
 };
 
 const navLinks = [
+  { name: "Guide", href: "/guide" },
   { name: "Browse companies", href: "/companies" },
   { name: "View jobs", href: "/jobs" },
   { name: "Life in NL", href: "/life-in-the-netherlands" },
@@ -44,11 +45,7 @@ export default function Navigation() {
     setLastScrollTop((prevScrollTop) => {
       if (!isMenuToggled) {
         if (currentScrollTop > MINIMUM_SCROLL_LENGTH) {
-          if (currentScrollTop > prevScrollTop) {
-            setScrollDirection("down");
-          } else if (currentScrollTop < prevScrollTop) {
-            setScrollDirection("up");
-          }
+          setScrollDirection(currentScrollTop > prevScrollTop ? "down" : "up");
         } else {
           setScrollDirection("none");
         }
@@ -65,7 +62,7 @@ export default function Navigation() {
     return () => {
       window.removeEventListener("scroll", handleScrollThrottled);
     };
-  }, [isMenuToggled]);
+  }, [isMenuToggled, isDesktop]);
 
   function handleMenuToggle() {
     if (isDesktop) return;
@@ -76,6 +73,10 @@ export default function Navigation() {
         newToggleState
           ? document.documentElement.classList.add("no-scroll")
           : document.documentElement.classList.remove("no-scroll");
+
+        if (!newToggleState) {
+          setScrollDirection("none");
+        }
 
         return newToggleState;
       });

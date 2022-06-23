@@ -23,6 +23,7 @@
   background: var(--color-text-secondary);
   color: var(--color-white);
 }
+.button--active,
 .button--primary:hover {
   border-color: var(--color-text-primary);
   background: var(--color-text-primary);
@@ -32,4 +33,26 @@
 .button--disabled {
   opacity: 0.7;
   pointer-events: none;
+}
+
+.button--small {
+  padding: var(--space-8);
+  font-size: 12px;
+}
+
+.button--lean {
+  border-style: none;
+  padding-left: 0;
+}
+.button--lean:hover {
+  background: none;
+  color: var(--color-text-secondary);
+  text-decoration: underline;
+}
+
+@media screen and (min-width: 768px) {
+  .button--small {
+    padding: var(--space-12);
+    font-size: 13px;
+  }
 }

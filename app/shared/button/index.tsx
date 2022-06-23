@@ -11,11 +11,12 @@ type ButtonProps = {
   as?: "link" | "button";
   text: string;
   href?: string;
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "lean";
   type?: "button" | "submit" | "reset";
   className?: string;
   disabled?: boolean;
   isLoading?: boolean;
+  isActive?: boolean;
   onClick?: React.MouseEventHandler;
   [x: string]: any;
 };
@@ -27,7 +28,9 @@ export default function Button({
   className = "",
   disabled = false,
   isLoading,
+  isActive,
   text,
+  size,
   onClick,
   ...rest
 }: ButtonProps) {
@@ -36,7 +39,10 @@ export default function Button({
       <Link
         className={`button button--${variant} ${
           disabled ? "button--disabled" : ""
-        } ${className}`}
+        } ${className}
+        ${size ? `button--${size}` : ""}
+        ${isActive ? `button--active` : ""}
+        `}
         to={href}
         prefetch="intent"
         {...rest}
@@ -53,7 +59,10 @@ export default function Button({
       onClick={onClick}
       className={`button button--${variant} ${
         disabled ? "button--disabled" : ""
-      } ${className}`}
+      } ${className}
+      ${size ? `button--${size}` : ""}
+      ${isActive ? `button--active` : ""}
+      `}
       disabled={disabled}
       {...rest}
     >
