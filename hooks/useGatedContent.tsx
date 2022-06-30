@@ -13,6 +13,8 @@ export function useGatedContent(content: any) {
       "http://localhost:3000/companies",
       "https://worksponsor.nl/",
       "https://www.worksponsor.nl/",
+      "https://www.worksponsor.nl/guide",
+      "https://www.worksponsor.nl/guide/work-in-nl-requirements",
     ];
 
     const shouldRender =
