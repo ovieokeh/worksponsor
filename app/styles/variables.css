@@ -52,7 +52,7 @@ html, body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: clamp(100%, 1rem + 2vw, 24px);
   overflow-x: hidden;
 }

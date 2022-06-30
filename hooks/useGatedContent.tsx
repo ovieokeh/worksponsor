@@ -9,6 +9,7 @@ export function useGatedContent(content: any) {
   useIsomorphicLayoutEffect(() => {
     const allowedPages = [
       "http://localhost:3000/",
+      "http://localhost:3000/guide",
       "http://localhost:3000/companies",
       "https://worksponsor.nl/",
       "https://www.worksponsor.nl/",

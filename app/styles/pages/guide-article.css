@@ -1,0 +1,35 @@
+.article__featured-image {
+  width: 100vw;
+  height: 400px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.article__intro {
+  background: var(--color-white);
+  border-radius: 8px;
+  padding: var(--space-32);
+  position: relative;
+  top: -180px;
+  left: 0;
+  right: 0;
+  width: 85%;
+  margin: 0 auto;
+  margin-bottom: -130px;
+  box-shadow:
+    0px 0px 165px -18px rgba(0, 0, 0, 0.32)
+  ;
+}
+
+.article__title {
+  margin-bottom: 0;
+}
+
+.article__description {
+  max-width: 70%;
+}
+
+.article__content-container {
+  max-width: 800px;
+  padding-top: 0;
+}

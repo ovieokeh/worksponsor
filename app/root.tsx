@@ -26,7 +26,7 @@ export const links: LinksFunction = () => {
   return [
     {
       rel: "stylesheet",
-      href: "https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Inter:wght@300;400;500&display=swap",
+      href: "https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Nunito:wght@300;400;500&display=swap",
     },
     { rel: "stylesheet", href: styleVariables },
     ...navLinks(),

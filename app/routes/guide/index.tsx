@@ -1,16 +1,46 @@
+import type { LoaderFunction } from "@remix-run/server-runtime";
+import type { Article } from "content";
+import { json } from "@remix-run/server-runtime";
 import { useMemo, useState } from "react";
 
+import { getGuideArticles } from "content";
 import Markdown from "~/shared/markdown";
 import Container from "~/shared/container";
 import Button from "~/shared/button";
 
 import guideStyles from "~/styles/pages/guide.css";
+// import { useLoaderData } from "@remix-run/react";
 
 export function links() {
   return [{ rel: "stylesheet", href: guideStyles }];
 }
 
 const sections = [
+  {
+    name: "Working in the Netherlands",
+    pages: [
+      {
+        name: "What do you need to work in the Netherlands?",
+        link: "/guide/work-in-nl-requirements",
+      },
+      {
+        name: "What is the work environment generally like in Dutch companies?",
+        link: "/guide/work-in-nl/work-environment",
+      },
+      {
+        name: "Important information that you need to know about working in the Netherlands",
+        link: "/guide/work-in-nl/important-information",
+      },
+      {
+        name: "Life in the Netherlands",
+        link: "/guide/work-in-nl/life-in-nl",
+      },
+      {
+        name: "Relocation guide and checklist",
+        link: "/guide/work-in-nl/relocation-guide",
+      },
+    ],
+  },
   {
     name: "Top 5 skills in the Dutch job market",
     useIndex: true,
@@ -34,31 +64,6 @@ const sections = [
       {
         name: "Software Developer",
         link: "/guide/top-skills/software-developer",
-      },
-    ],
-  },
-  {
-    name: "Working in the Netherlands",
-    pages: [
-      {
-        name: "What do you need to work in the Netherlands?",
-        link: "/guide/work-in-nl/requirements",
-      },
-      {
-        name: "What is the work environment generally like in Dutch companies?",
-        link: "/guide/work-in-nl/work-environment",
-      },
-      {
-        name: "Important information that you need to know about working in the Netherlands",
-        link: "/guide/work-in-nl/important-information",
-      },
-      {
-        name: "Life in the Netherlands",
-        link: "/guide/work-in-nl/life-in-nl",
-      },
-      {
-        name: "Relocation guide and checklist",
-        link: "/guide/work-in-nl/relocation-guide",
       },
     ],
   },
@@ -93,6 +98,19 @@ type Section = {
   description?: string | undefined;
   useIndex?: boolean | undefined;
   pages: SectionPage[];
+};
+
+type LoaderData = {
+  articles: Article[];
+};
+export const loader: LoaderFunction = async ({ request, params }) => {
+  const articles = await getGuideArticles();
+  if (!articles) {
+    console.log("error");
+    throw new Response("Not Found", { status: 404 });
+  }
+
+  return json<LoaderData>({ articles });
 };
 
 export default function Guide() {
@@ -147,7 +165,7 @@ export default function Guide() {
     return result;
   }, [selectedFilters]);
 
-  const articles = pageSections.map((section) => {
+  const articless = pageSections.map((section) => {
     return (
       <div key={section.name} className="guide__section">
         <p>{section.name}</p>
@@ -190,7 +208,7 @@ export default function Guide() {
 
         <div className="guide-filters">{filters}</div>
 
-        <div className="guide__sections">{articles}</div>
+        <div className="guide__sections">{articless}</div>
       </Container>
     </main>
   );
