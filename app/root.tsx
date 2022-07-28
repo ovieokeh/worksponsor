@@ -9,7 +9,6 @@ import {
   useOutlet,
 } from "@remix-run/react";
 
-import AnimatedOutlet from "./components/animated-outlet";
 import Navigation, { links as navLinks } from "./shared/navigation";
 import Layout, { links as layoutLinks } from "./shared/layout";
 import { links as containerLinks } from "./shared/container";
@@ -56,9 +55,7 @@ export default function App() {
 
       <body>
         <Navigation />
-        <Layout>
-          <AnimatedOutlet outlet={outlet} />
-        </Layout>
+        <Layout>{outlet}</Layout>
         <Footer />
 
         <ScrollRestoration />
@@ -96,7 +93,7 @@ export const CatchBoundary: CatchBoundaryComponent = () => {
       <body>
         <Navigation />
         <Layout>
-          <AnimatedOutlet outlet={<Construction />} />
+          <Construction />
         </Layout>
         <Footer />
         <ScrollRestoration />
